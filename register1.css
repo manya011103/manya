@@ -1,0 +1,125 @@
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    min-height:100vh;
+    width: 100%;
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(https://www.shutterstock.com/shutterstock/photos/1517085572/display_1500/stock-photo-mathura-india-feburary-group-of-boisterous-indian-children-running-for-photograph-in-1517085572.jpg);
+    background-position: center;
+    background-size: 100% 120%;
+    position: relative;
+    font-family: sans-serif;
+}
+
+.nav2{
+background: transparent;
+color: white;
+display:flex;
+padding:2% 6%;
+justify-content: space-around;
+align-items:center;
+}
+.logo2{
+font-size: 2em;
+letter-spacing: 2px;
+}
+.nav-list{
+flex: 1;
+text-align: center;
+}
+.nav-list ul li{
+list-style: none;
+display: inline-block;
+padding: 8px 12 px;
+position: relative;
+}
+.nav-list ul li a{
+color: white;
+text-decoration: none;
+font-size: 14px;
+}
+.register a{
+display: inline-blocks;
+text-decoration: none;
+color: white;
+padding: 12px 34px;
+font-size: 13px;
+background: transparent;
+border-radius: 4px;
+position: relative;
+ border: white 1px solid;
+}
+.nav-list ul li::after{
+content: '';
+width: 0%;
+height: 2px;
+background: #f44336;
+display: block;
+margin: auto;
+transition: 0.5s;
+}
+.nav-list ul li:hover::after{
+width:100%;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.register1 {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.form {
+    padding: 20px;
+    background-color: #fff3f3;
+    border-radius: 10px;
+    border: 2px solid #888;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+margin-left: 20px;
+}
+
+.submit {
+    padding: 10px;
+    background-color: indianred;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.submit:hover {
+    background-color: red;
+}

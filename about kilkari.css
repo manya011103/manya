@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    min-height:100vh;
+    width: 100%;
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(https://www.webalive.com.au/wp-content/uploads/2018/07/non-profit-websites.jpg);
+    background-position: center;
+    background-size: 100% 120%;
+    position: relative;
+    font-family: sans-serif;
+}
+.nav1{
+width: 100%;
+height: 50px;
+color:white;
+background: #222f3e;
+display: flex;
+/*---justify-content: space-around;--*/
+align-itms: left;
+padding:15px;
+}
+.nav1 i{
+margin:2px;
+}
+.nav1 a{
+text-decoration: none;
+color: white;
+padding: 5px 10px;
+background: transparent;
+margin:1px;
+border:white solid 1px;
+}
+.nav1 a:hover{
+border:white solid 1px;
+background:indianred;
+transition:0.5s;
+}
+.nav2{
+background: transparent;
+color: white;
+display:flex;
+padding:2% 6%;
+justify-content: space-around;
+align-items:center;
+}
+.logo2{
+font-size: 2em;
+letter-spacing: 2px;
+}
+.nav-list{
+flex: 1;
+text-align: center;
+}
+.nav-list ul li{
+list-style: none;
+display: inline-block;
+padding: 8px 12 px;
+position: relative;
+}
+.nav-list ul li a{
+color: white;
+text-decoration: none;
+font-size: 14px;
+}
+.register a{
+display: inline-blocks;
+text-decoration: none;
+color: white;
+padding: 12px 34px;
+font-size: 13px;
+background: transparent;
+border-radius: 4px;
+position: relative;
+ border: white 1px solid;
+}
+.register a:hover{
+border: 1px solid black;
+background: #f44336;
+transition: 1s;
+}
+.nav-list ul li::after{
+content: '';
+width: 0%;
+height: 2px;
+background: #f44336;
+display: block;
+margin: auto;
+transition: 0.5s;
+}
+.nav-list ul li:hover::after{
+width:100%;
+}
+.class1{
+width=90%
+color: #fff;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+text-align: center;
+}
+.class1 h1{
+font-size: 40px;
+}
+.class1 h2{
+margin: 10px 0 40px;
+font-size: 16px;
+color: #fff;
+}
+.class2{
+flex: 1;
+text-align: center;
+}
+.class2 ul li{
+list-style: none;
+display: inline-block;
+padding: 8px 12 px;
+position: relative;
+}
+.class2 ul li a{
+color: white;
+text-decoration: none;
+font-size: 14px;
+}
+.register a{
+display: inline-blocks;
+text-decoration: none;
+color: white;
+padding: 12px 34px;
+font-size: 13px;
+background: transparent;
+border-radius: 4px;
+position: relative;
+ border: white 1px solid;
+}
+<!-------body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://www.webalive.com.au/wp-content/uploads/2018/07/non-profit-websites.jpg);
+background-position: center;
+    background-size: 100% 120%;
+    position: relative;
+min-height:100vh;
+    width: 100%;
+}----->
+
+.class1 {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    padding-top: 50px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+h2{
+color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+p {
+    font-size: 18px;
+    color: black;
+text-align: center;
+}
+
+.class2, .class3, .class4 {
+    width: 100%;
+    background: #fff3f3;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+h4{
+color: black;
+font-size: 36px;
+font-weight: 600;
+text-align: center;
+}
+strong {
+    color: #333;
+}
+.class2:hover{
+box-shadow:0 0 20px 0px rgba(0,0,0,0.2);
+}
+.class3:hover{
+box-shadow:0 0 20px 0px rgba(0,0,0,0.2);
+}
+.class4:hover{
+box-shadow:0 0 20px 0px rgba(0,0,0,0.2);
+}
+/*----------footer------------*/
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer div {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.footer h3 {
+    color: #f4f4f4;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer p, .footer li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.footer-social {
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+
+
