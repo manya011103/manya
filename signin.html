@@ -1,22 +1,45 @@
 <html>
-<head>
-        <title>Sign In - Kilkari</title>
-    <link rel="stylesheet" href="signin.css">
-</head>
 <body>
-    <div class="class1">
+<head>
+<link rel="stylesheet" href="signin.css">
+</head>
+<script>
+function validate() {
+    let email = document.myform.email.value.trim();
+    let password = document.myform.password.value;
+
+    // Email validation
+    if (email === "") {
+        alert("Email cannot be empty");
+        return false;
+    } else if (!email.includes("@") || !email.includes(".")) {
+        alert("Invalid email format. Email must contain '@' and '.'");
+        return false;
+    }
+
+    // Password validation
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long");
+        return false;
+    }
+
+    alert("Email and Password are valid!");
+    return true;
+}
+</script>
+<body>
+<div class="class1">
         <div class="form-box">
             <h2>Sign In</h2>
-            <form action method="post">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+<form name="myform" method="post" onsubmit="return validate();">
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" placeholder="example@example.com"><br><br>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" placeholder="Enter your password"><br><br>
 
-                <button type="submit" class="submit">Sign In</button>
-
-                <div class="extra-options">
+    <button type="submit" class="submit" name="submit">Sign In</button>
+<div class="extra-options">
                     <p>Don't have an account? <a href="register.html">Register</a></p>
                     <p><a href="#">Forgot Password?</a></p>
                 </div>
