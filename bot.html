@@ -1,148 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasa Chatbot UI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        .chat-container {
-            width: 400px;
-            height: 600px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-        }
-        .chat-header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            font-size: 18px;
-        }
-        .chat-body {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            background-color: #f9f9f9;
-        }
-        .message {
-            margin: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-        .user-message {
-            background-color: #4a90e2;
-            color: white;
-            margin-left: auto;
-        }
-        .bot-message {
-            background-color: #e4e6eb;
-            color: black;
-        }
-        .chat-footer {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-        #user-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-        }
-        #send-button {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-left: 10px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-        #send-button:hover {
-            background-color: #3578c2;
-        }
-    </style>
-</head>
-<body>
-    <div class="chat-container">
-        <div class="chat-header">The OG Chatbot</div>
-        <div class="chat-body" id="chat-body"></div>
-        <div class="chat-footer">
-            <input type="text" id="user-input" placeholder="Type a message..." />
-            <button id="send-button" onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+       <html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Rasa Chatbot UI</title>
+           <style>
+               body {
+                   font-family: Arial, sans-serif;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;
+                   height: 100vh;
+                   margin: 0;
+                   background-color: #f0f2f5;
+               }
+               .chat-container {
+                   width: 400px;
+                   height: 600px;
+                   background-color: white;
+                   border-radius: 10px;
+                   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                   display: flex;
+                   flex-direction: column;
+               }
+               .chat-header {
+                   background-color: #4a90e2;
+                   color: white;
+                   padding: 15px;
+                   text-align: center;
+                   border-top-left-radius: 10px;
+                   border-top-right-radius: 10px;
+                   font-size: 18px;
+               }
+               .chat-body {
+                   flex: 1;
+                   padding: 10px;
+                   overflow-y: auto;
+                   background-color: #f9f9f9;
+               }
+               .message {
+                   margin: 10px;
+                   padding: 10px;
+                   border-radius: 10px;
+                   max-width: 70%;
+                   word-wrap: break-word;
+               }
+               .user-message {
+                   background-color: #4a90e2;
+                   color: white;
+                   margin-left: auto;
+               }
+               .bot-message {
+                   background-color: #e4e6eb;
+                   color: black;
+               }
+               .error-message {
+                   background-color: #f44336;
+                   color: white;
+               }
+               .chat-footer {
+                   display: flex;
+                   padding: 10px;
+                   border-top: 1px solid #ddd;
+               }
+               #user-input {
+                   flex: 1;
+                   padding: 10px;
+                   border: 1px solid #ddd;
+                   border-radius: 20px;
+                   outline: none;
+               }
+               #send-button {
+                   background-color: #4a90e2;
+                   color: white;
+                   border: none;
+                   padding: 10px 20px;
+                   margin-left: 10px;
+                   border-radius: 20px;
+                   cursor: pointer;
+               }
+               #send-button:hover {
+                   background-color: #3578c2;
+               }
+           </style>
+       </head>
+       <body>
+           <div class="chat-container">
+               <div class="chat-header">Rasa Chatbot</div>
+               <div class="chat-body" id="chat-body"></div>
+               <div class="chat-footer">
+                   <input type="text" id="user-input" placeholder="Type a message..." />
+                   <button id="send-button" onclick="sendMessage()">Send</button>
+               </div>
+           </div>
 
-    <script>
-        const chatBody = document.getElementById('chat-body');
-        const userInput = document.getElementById('user-input');
+           <script>
+               const chatBody = document.getElementById('chat-body');
+               const userInput = document.getElementById('user-input');
+               // Replace with your Ngrok URL
+               const rasaServerUrl = 'https://<your-ngrok-url>.ngrok.io/webhooks/rest/webhook';
 
-        // Function to add a message to the chat body
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
-            messageDiv.textContent = text;
-            chatBody.appendChild(messageDiv);
-            chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to bottom
-        }
+               function addMessage(text, type) {
+                   const messageDiv = document.createElement('div');
+                   messageDiv.classList.add('message', type === 'user' ? 'user-message' : type === 'error' ? 'error-message' : 'bot-message');
+                   messageDiv.textContent = text;
+                   chatBody.appendChild(messageDiv);
+                   chatBody.scrollTop = chatBody.scrollHeight;
+               }
 
-        // Function to send message to Rasa server
-        async function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
+               async function sendMessage() {
+                   const message = userInput.value.trim();
+                   if (!message) {
+                       addMessage('Please enter a message.', 'error');
+                       return;
+                   }
 
-            // Display user message
-            addMessage(message, 'user');
-            userInput.value = '';
+                   addMessage(message, 'user');
+                   userInput.value = '';
 
-            try {
-                const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        sender: 'user',
-                        message: message,
-                    }),
-                });
+                   try {
+                       const response = await fetch(rasaServerUrl, {
+                           method: 'POST',
+                           headers: {
+                               'Content-Type': 'application/json',
+                           },
+                           body: JSON.stringify({
+                               sender: 'user',
+                               message: message,
+                           }),
+                       });
 
-                const data = await response.json();
-                // Display bot responses (Rasa may return multiple responses)
-                data.forEach(item => {
-                    if (item.text) {
-                        addMessage(item.text, 'bot');
-                    }
-                });
-            } catch (error) {
-                console.error('Error:', error);
-                addMessage('Sorry, something went wrong.', 'bot');
-            }
-        }
+                       if (!response.ok) {
+                           throw new Error(`HTTP error! Status: ${response.status}`);
+                       }
 
-        // Allow sending message with Enter key
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-    </script>
-</body>
-</html>
+                       const data = await response.json();
+                       if (!data || data.length === 0) {
+                           addMessage('No response from the bot.', 'error');
+                           console.warn('Empty response from Rasa server');
+                           return;
+                       }
+
+                       data.forEach(item => {
+                           if (item.text) {
+                               addMessage(item.text, 'bot');
+                           } else {
+                               console.warn('Invalid response item:', item);
+                           }
+                       });
+                   } catch (error) {
+                       console.error('Error communicating with Rasa server:', error);
+                       addMessage('Failed to connect to the bot. Please try again later.', 'error');
+                   }
+               }
+
+               userInput.addEventListener('keypress', (e) => {
+                   if (e.key === 'Enter') {
+                       sendMessage();
+                   }
+               });
+
+               async function checkServer() {
+                   try {
+                       // Use POST to check server, as webhook doesn't support GET
+                       const response = await fetch(rasaServerUrl, {
+                           method: 'POST',
+                           headers: {
+                               'Content-Type': 'application/json',
+                           },
+                           body: JSON.stringify({
+                               sender: 'test',
+                               message: 'ping',
+                           }),
+                       });
+                       if (!response.ok) {
+                           throw new Error(`HTTP error! Status: ${response.status}`);
+                       }
+                       console.log('Rasa server is reachable');
+                   } catch (error) {
+                       console.error('Rasa server check failed:', error);
+                       addMessage('Cannot connect to the bot server. Please check the server status.', 'error');
+                   }
+               }
+
+               window.onload = checkServer;
+           </script>
+       </body>
+       </html>
