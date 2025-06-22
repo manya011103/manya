@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>Add commentMore actions
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -113,7 +113,7 @@
             userInput.value = '';
 
             try {
-                const response = await fetch('http://192.168.1.6:5005/webhooks/rest/webhook', {
+                const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
